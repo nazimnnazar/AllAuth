@@ -1,0 +1,28 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/logout.css' %}" rel="stylesheet">
+    <title>Logout</title>
+</head>
+<body>
+  <div class="logout-container">
+    <div class="summary-section">
+        <h3>account</h3>
+        <p>Username:{{user}}</p>
+        <p>Email: {{user.email}}</p>
+    </div>
+    <div class="form-section">
+        <h3>{% trans 'Are you sure you want to sign out?' %}</h3>
+        <form action="{% url 'account_logout' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="{% trans 'Sign Out' %}">
+        </form>
+    </div>
+  </div>
+</body>
+</html>
